@@ -16,6 +16,7 @@ def switch_pegs(state, some_peg, other_peg) :
     """ Switches values of some_peg and other_peg in state. """
     switched = { some_peg : state[other_peg],
                 other_peg : state[some_peg] }
+    state.update(switched)
 
 def solution_states(n) :
     """ Prints a list of solution states (which are dictionaries)
