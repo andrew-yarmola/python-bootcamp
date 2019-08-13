@@ -28,8 +28,6 @@ def inversion_count(A) :
     return sum( A[i] > A[j] for i,j in it.combinations(range(len(A)), 2)) 
 
 def print_groupby(data, group_key) :
-    data = sorted(data, key=lambda x : x[group_key])
-    for key, value in it.groupby(data, lambda x : x[group_key]):
-        print(key)
-        for item in value:
-            print("    ", item)
+    data = sorted(data, key = lambda x : x[group_key])
+    for key, items in it.groupby(data, lambda x : x[group_key]):
+        print(key, *map(lambda item : '\n    ' + str(item), items))
