@@ -112,4 +112,4 @@ class DualNumber :
 def derivative(f,a) :
     """ Given a function f defined using +,-,*,/, and integer pow,
     returns the numeric value f'(a). Computed using dual numbers. """
-    return f(DualNumber(a,1)).dual
+    return f(DualNumber(a, 1.)).dual
