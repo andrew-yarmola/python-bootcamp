@@ -46,6 +46,9 @@ def make_files(path_to_text, files_dir = 'sorting_dir', ext = 'ext') :
                 touch(new_file)                
 
 def first_letter_sort(sorting_dir) :
+    # This is a terrible way to implement this!
+    # Editing files while walking a directory is not a good idea!
+    # Don't do this!!!
     for root, dirs, files in os.walk(sorting_dir) :
         orig_cwd = os.getcwd()
         os.chdir(root)
@@ -57,4 +60,4 @@ def first_letter_sort(sorting_dir) :
                 os.mkdir(dir_name)
             shutil.move(path, dir_name)
         os.chdir(orig_cwd)
-        break # only touch files in the top dir
+        break # only touch files in the top dir... horrible
