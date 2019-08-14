@@ -15,6 +15,7 @@ marshmallow-sqlalchemy = "*"
 marshmallow = "*"
 pymysql = {extras = ["rsa"],version = "*"}
 flask-restplus = "*"
+flask-redis = "*"
 
 [requires]
 python_version = "3.7"
