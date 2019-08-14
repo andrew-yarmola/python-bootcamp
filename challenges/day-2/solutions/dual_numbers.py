@@ -19,7 +19,7 @@ class DualNumber :
 
     def __eq__(self, other) :
         if is_num(other) :
-            return self.real == other.real and self.dual == 0
+            return self.real == float(other) and self.dual == 0
         if isinstance(other, DualNumber) :
             return self.real == other.real and self.dual == other.dual
         return NotImplemented
@@ -112,4 +112,4 @@ class DualNumber :
 def derivative(f,a) :
     """ Given a function f defined using +,-,*,/, and integer pow,
     returns the numeric value f'(a). Computed using dual numbers. """
-    return f(DualNumber(a, 1.)).dual
+    return f(DualNumber(float(a), 1.)).dual
