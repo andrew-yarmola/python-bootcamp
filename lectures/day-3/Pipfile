@@ -16,6 +16,7 @@ marshmallow = "*"
 pymysql = {extras = ["rsa"],version = "*"}
 flask-restplus = "*"
 flask-redis = "*"
+fakeredis = "*"
 
 [requires]
 python_version = "3.7"

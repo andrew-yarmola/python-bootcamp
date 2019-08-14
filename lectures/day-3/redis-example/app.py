@@ -1,18 +1,16 @@
 from flask import Flask
+from flask_redis import FlaskRedis
 import os
 import socket
-import redis
-
-# Connect to Redis
-redis_conn = redis.from_url('redis://localhost:6379')
 
 app = Flask(__name__)
+redis_client = FlaskRedis(app)
 
 @app.route("/")
 def hello():
     print("Runnnig Hello")
     try :
-        visits = redis_conn.incr("counter")
+        visits = redis_client.incr("counter")
     except redis.RedisError :
         visits = "<i>cannot connect to Redis, counter disabled</i>"
 
