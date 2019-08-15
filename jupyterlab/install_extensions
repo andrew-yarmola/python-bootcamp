@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# spell check
+pipenv run jupyter labextension install @ijmbarr/jupyterlab_spellchecker
+
+# matplot lib interactive
+brew install node
+pipenv run jupyter labextension install @jupyter-widgets/jupyterlab-manager
+pipenv run jupyter labextension install jupyter-matplotlib
