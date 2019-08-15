@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: uninstall_kernel kernel_name"
+    exit -1
+fi
+
+pipenv run jupyter kernelspec uninstall "$1"

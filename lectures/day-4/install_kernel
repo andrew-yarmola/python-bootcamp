@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: install_kernel name_to_use"
+    exit -1
+fi
+
+pipenv run python -m ipykernel install --user --name="$3"
