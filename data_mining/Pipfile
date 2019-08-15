@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipykernel = "*"
+
+[packages]
+numpy = "*"
+scipy = "*"
+scikit-learn = "*"
+matplotlib = "*"
+sqlalchemy = "*"
+pymysql = {extras = ["rsa"],version = "*"}
+seaborn = "*"
+moviepy = "*"
+
+[requires]
+python_version = "3.7"
