@@ -112,7 +112,7 @@ definitions:
       - name
     properties:
       employee_id:
-        type: string
+        type: integer
         description: Unique identifier
         example: "123"
         readOnly: true
@@ -123,12 +123,12 @@ definitions:
         minLength: 1
         maxLength: 100
       age:
-        type: string
+        type: integer
         description: Employee's age
         example: "35"
         minLength: 1
       monthly_salary:
-        type: string
+        type: number
         description: Employee's monthly salary
         example: "23124.53"
         minLength: 1
