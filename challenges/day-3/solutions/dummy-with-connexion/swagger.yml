@@ -1,0 +1,140 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /employee:
+    get:
+      operationId: employee.read_all
+      tags:
+        - Employee
+      summary: Read the entire set of employees, sorted by employee_id
+      description: Read the entire set of employees, sorted by employee_id 
+      responses:
+        200:
+          description: Successfully got all employees
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/employee'
+
+    post:
+      operationId: employee.create
+      tags:
+        - Employee
+      summary: Create a employee
+      description: Create a new employee
+      parameters:
+        - $ref: '#/parameters/employee'
+      responses:
+        201:
+          description: Successfully created employee
+          schema:
+            $ref: '#/definitions/employee'
+
+  /employee/{employee_id}:
+    get:
+      operationId: employee.read_one
+      tags:
+        - Employee
+      summary: Read one employee
+      description: Read one employee
+      parameters:
+        - $ref: '#/parameters/employee_id'
+      responses:
+        200:
+          description: Successfully read employee from employee data operation
+          schema:
+              $ref: '#/definitions/employee'
+
+    put:
+      operationId: employee.update
+      tags:
+        - Employee
+      summary: Update a employee
+      description: Update a employee
+      parameters:
+        - $ref: '#/parameters/employee_id'
+        - $ref: '#/parameters/employee'
+      responses:
+        200:
+          description: Successfully updated employee
+          schema:
+            $ref: '#/definitions/employee'
+    delete:
+      operationId: employee.delete
+      tags:
+        - Employee
+      summary: Delete a employee from the employee list
+      description: Delete a employee
+      parameters:
+        - $ref: '#/parameters/employee_id'
+      responses:
+        200:
+          description: Successfully deleted a employee
+
+parameters:
+  employee_id:
+    name: employee_id
+    description: Employees's unique identifier
+    in: path
+    type: string
+    required: true
+    pattern: "^[0-9]+$"
+  employee:
+    name: employee
+    in: body
+    description: Employee to create or update
+    required: True
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: "^[a-zA-Z\\s]*$"
+          description: Name of employee to create or update
+          minLength: 1
+          maxLength: 100
+
+definitions:
+  employee:
+    type: object
+    required:
+      - name
+    properties:
+      employee_id:
+        type: string
+        description: Unique identifier
+        example: "123"
+        readOnly: true
+      name:
+        type: string
+        description: Employee's name
+        example: "Susie Andrews"
+        minLength: 1
+        maxLength: 100
+      age:
+        type: string
+        description: Employee's age
+        example: "35"
+        minLength: 1
+      monthly_salary:
+        type: string
+        description: Employee's monthly salary
+        example: "23124.53"
+        minLength: 1
+      timestamp:
+        type: string
+        format: date-time
+        description: Creation or update time
+        example: "2015-07-07T15:49:51.230+02:00"
+        readOnly: true

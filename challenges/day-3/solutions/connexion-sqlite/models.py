@@ -7,7 +7,6 @@ class Person(db.Model):
     __tablename__ = "person"
     person_id = db.Column(db.Integer, primary_key=True)
     lname = db.Column(db.String(32))
-    mname = db.Column(db.String(32))
     fname = db.Column(db.String(32))
     timestamp = db.Column(
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
@@ -77,6 +76,5 @@ class NotePersonSchema(ma.ModelSchema):
 
     person_id = fields.Int()
     lname = fields.Str()
-    mname = fields.Str()
     fname = fields.Str()
     timestamp = fields.Str()

@@ -1,0 +1,170 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /employee:
+    get:
+      operationId: employee.read_all
+      tags:
+        - Employee
+      summary: Read the entire set of employees, sorted by employee_id
+      description: Read the entire set of employees, sorted by employee_id 
+      responses:
+        200:
+          description: Successfully got all employees
+          schema:
+            type: array
+            items:
+              properties:
+                employee_id:
+                  type: integer
+                  description: Employee id
+                age:
+                  type: integer
+                  description: Age of employee
+                salary:
+                  type: float
+                  description: Salary of employee
+                name:
+                  type: string
+                  description: Employee name
+                timestamp:
+                  type: string
+                  description: Create/Update timestamp for employee
+
+    post:
+      operationId: employee.create
+      tags:
+        - Employee
+      summary: Create a employee
+      description: Create a new employee
+      parameters:
+        - name: employee
+          in: body
+          description: Employee to create
+          required: True
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of employee to create
+      responses:
+        201:
+          description: Successfully created employee
+          schema:
+            properties:
+              employee_id:
+                type: integer
+                description: Employee id
+              age:
+                type: integer
+                description: Age of employee
+              salary:
+                type: float
+                description: Salary of employee
+              timestamp:
+                type: string
+                description: Create/Update timestamp for employee
+              name:
+                type: string
+                description: Employee name
+
+  /employee/{employee_id}:
+    get:
+      operationId: employee.read_one
+      tags:
+        - Employee
+      summary: Read one employee
+      description: Read one employee
+      parameters:
+        - name: employee_id
+          in: path
+          description: Id of the employee to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read employee from employee data operation
+          schema:
+            properties:
+              employee_id:
+                type: integer
+                description: Employee id
+              age:
+                type: integer
+                description: Age of employee
+              salary:
+                type: float
+                description: Salary of employee
+              timestamp:
+                type: string
+                description: Create/Update timestamp for employee
+              name:
+                type: string
+                description: Employee name
+
+    put:
+      operationId: employee.update
+      tags:
+        - Employee
+      summary: Update a employee
+      description: Update a employee
+      parameters:
+        - name: employee_id
+          in: path
+          description: Id the employee to update
+          type: integer
+          required: True
+        - name: employee
+          in: body
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the employee
+      responses:
+        200:
+          description: Successfully updated employee
+          schema:
+            type: object
+            properties:
+              employee_id:
+                type: string
+                description: Id of the employee
+              fname:
+                type: string
+                description: First name of the employee
+              lname:
+                type: string
+                description: Last name of the employee
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the employee record
+
+    delete:
+      operationId: employee.delete
+      tags:
+        - Employee
+      summary: Delete a employee from the employee list
+      description: Delete a employee
+      parameters:
+        - name: employee_id
+          in: path
+          type: integer
+          description: Id of the employee to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a employee
