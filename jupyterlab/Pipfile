@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 jupyterlab = "*"
 jupyter-nbextensions-configurator = "*"
-ipympl = "*"
 
 [requires]
 python_version = "3.7"

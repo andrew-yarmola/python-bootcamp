@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 ipykernel = "*"
+ipympl = "*"
 
 [packages]
 numpy = "*"
@@ -14,7 +15,12 @@ matplotlib = "*"
 sqlalchemy = "*"
 pymysql = {extras = ["rsa"],version = "*"}
 seaborn = "*"
-moviepy = "*"
+moviepy =  "*"
+pymc3 = "*"
+statsmodels = "*"
+pyod = "*"
+dsio = {editable = true,git = "https://github.com/MentatInnovations/datastream.io"}
+tornado = "==4.5.3"
 
 [requires]
 python_version = "3.7"
